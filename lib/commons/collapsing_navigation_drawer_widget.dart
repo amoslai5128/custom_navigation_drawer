@@ -12,6 +12,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final TextStyle? itemTextStyle;
   final TextStyle? selectedItemTextStyle;
   final Widget? buttonCopyrightWidget;
+  final void Function()? onTap;
 
   const CollapsingNavigationDrawer({
     Key? key,
@@ -24,6 +25,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.selectedItemTextStyle,
     this.userNameTextStyle,
     this.buttonCopyrightWidget,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
 }
 
 class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> with SingleTickerProviderStateMixin {
-  double maxWidth = 210;
+  double maxWidth = 240;
   double minWidth = 70;
   bool isCollapsed = false;
   late AnimationController _animationController;
