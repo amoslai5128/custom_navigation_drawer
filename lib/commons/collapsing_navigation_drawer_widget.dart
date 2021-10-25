@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../custom_navigation_drawer.dart';
 
 class CollapsingNavigationDrawer extends StatefulWidget {
-  final List<NavigationModel>? navigationModels;
+  final List<NavigationModel> navigationModels;
 
   const CollapsingNavigationDrawer({
     Key? key,
-    this.navigationModels,
+    required this.navigationModels,
   }) : super(key: key);
 
   @override
@@ -27,6 +27,11 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
   @override
   void initState() {
     super.initState();
+    if (widget.navigationModels.isEmpty) {
+      setState(() {
+        widget.navigationModels.addAll(demoNavigationItems);
+      });
+    }
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     widthAnimation = Tween<double>(begin: maxWidth, end: minWidth).animate(_animationController);
   }

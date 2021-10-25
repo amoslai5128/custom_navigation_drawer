@@ -21,18 +21,23 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: drawerBackgroundColor,
-        title: Text("Collapsing Navigation Drawer/Sidebar",),
-      ),
-      //drawer: CollapsingNavigationDrawer(),
-      body: Stack(
-        children: <Widget>[
-          Container(color: selectedColor,),
-          CollapsingNavigationDrawer()
-        ],
-      )
-    );
+        appBar: AppBar(
+          elevation: 0.0,
+          backgroundColor: drawerBackgroundColor,
+          title: Text(
+            "Collapsing Navigation Drawer/Sidebar",
+          ),
+        ),
+        //drawer: CollapsingNavigationDrawer(),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              color: selectedColor,
+            ),
+            CollapsingNavigationDrawer(
+              navigationModels: [],
+            ),
+          ],
+        ));
   }
 }
