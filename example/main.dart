@@ -36,6 +36,7 @@ class MyHomePage extends StatelessWidget {
             ),
             CollapsingNavigationDrawer(
               navigationModels: [],
+              userName: '',
             ),
           ],
         ));

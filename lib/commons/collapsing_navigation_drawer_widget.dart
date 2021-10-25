@@ -7,19 +7,23 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final Color? selectedIconColor;
+  final String userName;
   final TextStyle? userNameTextStyle;
   final TextStyle? itemTextStyle;
   final TextStyle? selectedItemTextStyle;
+  final Widget? buttonCopyrightWidget;
 
   const CollapsingNavigationDrawer({
     Key? key,
     required this.navigationModels,
+    required this.userName,
     this.backgroundColor,
     this.iconColor,
     this.selectedIconColor,
     this.itemTextStyle,
     this.selectedItemTextStyle,
     this.userNameTextStyle,
+    this.buttonCopyrightWidget,
   }) : super(key: key);
 
   @override
@@ -67,7 +71,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
             SizedBox(
               height: 85,
               child: CollapsingListTile(
-                title: 'Techie',
+                title: widget.userName,
                 iconColor: widget.iconColor,
                 textStyle: widget.userNameTextStyle,
                 icon: Icons.person,
@@ -119,6 +123,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
             ),
             SizedBox(
               height: 50.0,
+              child: FittedBox(child: widget.buttonCopyrightWidget),
             ),
           ],
         ),
