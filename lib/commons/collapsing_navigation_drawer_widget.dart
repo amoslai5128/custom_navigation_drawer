@@ -7,6 +7,8 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final Color? selectedIconColor;
+  final Color? selectedItemBackgroundColor;
+
   final String userName;
   final TextStyle? userNameTextStyle;
   final TextStyle? itemTextStyle;
@@ -24,6 +26,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.selectedItemTextStyle,
     this.userNameTextStyle,
     this.buttonCopyrightWidget,
+    this.selectedItemBackgroundColor,
   }) : super(key: key);
 
   @override
@@ -93,11 +96,12 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                       setState(() {
                         currentSelectedIndex = counter;
                       });
-                      widget.navigationModels[counter].onTap;
+                      widget.navigationModels[counter].onTap();
                     },
                     isSelected: currentSelectedIndex == counter,
                     iconColor: widget.iconColor,
                     selectedIconColor: widget.selectedIconColor,
+                    selectedItemBackgroundColor: widget.selectedItemBackgroundColor,
                     textStyle: widget.itemTextStyle,
                     selectedTextStyle: widget.selectedItemTextStyle,
                     title: widget.navigationModels[counter].title,
