@@ -64,12 +64,15 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
         color: widget.backgroundColor ?? drawerBackgroundColor,
         child: Column(
           children: <Widget>[
-            CollapsingListTile(
-              title: 'Techie',
-              iconColor: widget.iconColor,
-              textStyle: widget.userNameTextStyle,
-              icon: Icons.person,
-              animationController: _animationController,
+            SizedBox(
+              height: 85,
+              child: CollapsingListTile(
+                title: 'Techie',
+                iconColor: widget.iconColor,
+                textStyle: widget.userNameTextStyle,
+                icon: Icons.person,
+                animationController: _animationController,
+              ),
             ),
             Divider(
               color: Colors.grey,
