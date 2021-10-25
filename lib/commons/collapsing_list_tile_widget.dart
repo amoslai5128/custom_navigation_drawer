@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class CollapsingListTile extends StatefulWidget {
   final String title;
   final IconData icon;
+  final Color? iconColor;
+  final Color? selectedIconColor;
   final AnimationController animationController;
   final bool isSelected;
   final void Function()? onTap;
@@ -14,6 +16,8 @@ class CollapsingListTile extends StatefulWidget {
     required this.animationController,
     this.isSelected = false,
     this.onTap,
+    this.iconColor,
+    this.selectedIconColor,
   });
 
   @override
@@ -46,7 +50,7 @@ class _CollapsingListTileState extends State<CollapsingListTile> {
           children: <Widget>[
             Icon(
               widget.icon,
-              color: widget.isSelected ? selectedColor : Colors.white30,
+              color: widget.isSelected ? widget.selectedIconColor : (widget.iconColor ?? Colors.white30),
               size: 38.0,
             ),
             SizedBox(width: sizedBoxAnimation.value),

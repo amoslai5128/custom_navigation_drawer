@@ -4,10 +4,16 @@ import '../custom_navigation_drawer.dart';
 
 class CollapsingNavigationDrawer extends StatefulWidget {
   final List<NavigationModel> navigationModels;
+  final Color? backgroundColor;
+  final Color? iconColor;
+  final Color? selectedIconColor;
 
   const CollapsingNavigationDrawer({
     Key? key,
     required this.navigationModels,
+    this.backgroundColor,
+    this.iconColor,
+    this.selectedIconColor,
   }) : super(key: key);
 
   @override
@@ -49,7 +55,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
       elevation: 80.0,
       child: Container(
         width: widthAnimation.value,
-        color: drawerBackgroundColor,
+        color: widget.backgroundColor ?? drawerBackgroundColor,
         child: Column(
           children: <Widget>[
             CollapsingListTile(
@@ -74,6 +80,8 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                       });
                     },
                     isSelected: currentSelectedIndex == counter,
+                    iconColor: widget.iconColor,
+                    selectedIconColor: widget.selectedIconColor,
                     title: widget.navigationModels[counter].title,
                     icon: widget.navigationModels[counter].icon,
                     animationController: _animationController,
@@ -92,7 +100,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
               child: AnimatedIcon(
                 icon: AnimatedIcons.close_menu,
                 progress: _animationController,
-                color: selectedColor,
+                color: widget.selectedIconColor,
                 size: 50.0,
               ),
             ),
