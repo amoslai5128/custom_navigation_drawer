@@ -40,11 +40,11 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animationController,
-      builder: (context, widget) => getWidget(context, widget),
+      builder: (context, itemWidget) => getWidget(context, itemWidget),
     );
   }
 
-  Widget getWidget(context, widget) {
+  Widget getWidget(context, itemWidget) {
     return Material(
       elevation: 80.0,
       child: Container(
