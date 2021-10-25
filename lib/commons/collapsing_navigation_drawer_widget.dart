@@ -123,7 +123,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
             ),
             SizedBox(
               height: 50.0,
-              child: isCollapsed ? FittedBox(child: widget.buttonCopyrightWidget) : null,
+              child: isCollapsed ? null : FittedBox(child: widget.buttonCopyrightWidget),
             ),
           ],
         ),
