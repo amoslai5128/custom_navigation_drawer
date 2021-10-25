@@ -5,7 +5,9 @@ class CollapsingListTile extends StatefulWidget {
   final String title;
   final IconData icon;
   final Color? iconColor;
+  final TextStyle? textStyle;
   final Color? selectedIconColor;
+  final TextStyle? selectedTextStyle;
   final AnimationController animationController;
   final bool isSelected;
   final void Function()? onTap;
@@ -18,6 +20,8 @@ class CollapsingListTile extends StatefulWidget {
     this.onTap,
     this.iconColor,
     this.selectedIconColor,
+    this.textStyle,
+    this.selectedTextStyle,
   });
 
   @override
@@ -55,7 +59,12 @@ class _CollapsingListTileState extends State<CollapsingListTile> {
             ),
             SizedBox(width: sizedBoxAnimation.value),
             (widthAnimation.value >= 190)
-                ? Text(widget.title, style: widget.isSelected ? listTitleSelectedTextStyle : listTitleDefaultTextStyle)
+                ? Text(
+                    widget.title,
+                    style: widget.isSelected
+                        ? (widget.selectedTextStyle ?? listTitleSelectedTextStyle)
+                        : (widget.textStyle ?? listTitleDefaultTextStyle),
+                  )
                 : Container()
           ],
         ),

@@ -7,6 +7,8 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final Color? backgroundColor;
   final Color? iconColor;
   final Color? selectedIconColor;
+  final TextStyle? textStyle;
+  final TextStyle? selectedTextStyle;
 
   const CollapsingNavigationDrawer({
     Key? key,
@@ -14,6 +16,8 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.backgroundColor,
     this.iconColor,
     this.selectedIconColor,
+    this.textStyle,
+    this.selectedTextStyle,
   }) : super(key: key);
 
   @override
@@ -82,6 +86,8 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                     isSelected: currentSelectedIndex == counter,
                     iconColor: widget.iconColor,
                     selectedIconColor: widget.selectedIconColor,
+                    textStyle: widget.textStyle,
+                    selectedTextStyle: widget.selectedTextStyle,
                     title: widget.navigationModels[counter].title,
                     icon: widget.navigationModels[counter].icon,
                     animationController: _animationController,
