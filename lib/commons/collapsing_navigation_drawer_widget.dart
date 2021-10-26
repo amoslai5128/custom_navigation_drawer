@@ -73,7 +73,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
 
   Widget getWidget(context, itemWidget) {
     return Material(
-      elevation: 70.0,
+      elevation: isCollapsed ? 30.0 : 82.0,
       child: Container(
         width: widthAnimation.value,
         color: widget.backgroundColor ?? drawerBackgroundColor,
