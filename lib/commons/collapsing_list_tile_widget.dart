@@ -12,6 +12,8 @@ class CollapsingListTile extends StatefulWidget {
   final Color? selectedItemBackgroundColor;
 
   final AnimationController animationController;
+  final bool isCollapsedByDefault;
+
   final bool isSelected;
   final void Function()? onTap;
 
@@ -19,6 +21,7 @@ class CollapsingListTile extends StatefulWidget {
     required this.title,
     required this.icon,
     required this.animationController,
+    required this.isCollapsedByDefault,
     this.selectedItemBackgroundColor,
     this.isSelected = false,
     this.onTap,
@@ -38,8 +41,21 @@ class _CollapsingListTileState extends State<CollapsingListTile> {
   @override
   void initState() {
     super.initState();
-    widthAnimation = Tween<double>(begin: 200, end: 70).animate(widget.animationController);
-    sizedBoxAnimation = Tween<double>(begin: 10, end: 0).animate(widget.animationController);
+    final double beginW, endW, begainS, endS;
+    if (widget.isCollapsedByDefault) {
+      beginW = 70;
+      endW = 210;
+      begainS = 0;
+      endS = 10;
+    } else {
+      beginW = 210;
+      endW = 70;
+      begainS = 10;
+      endS = 0;
+    }
+
+    widthAnimation = Tween<double>(begin: beginW, end: endW).animate(widget.animationController);
+    sizedBoxAnimation = Tween<double>(begin: begainS, end: endS).animate(widget.animationController);
   }
 
   @override

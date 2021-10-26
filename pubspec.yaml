@@ -1,6 +1,6 @@
 name: custom_navigation_drawer
 description: A new Flutter package project.
-version: 0.0.3
+version: 0.0.4
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

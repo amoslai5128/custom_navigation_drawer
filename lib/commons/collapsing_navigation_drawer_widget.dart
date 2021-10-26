@@ -86,6 +86,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 textStyle: widget.userNameTextStyle,
                 icon: Icons.person,
                 animationController: _animationController,
+                isCollapsedByDefault: widget.isCollapsedByDefault,
               ),
             ),
             Divider(
@@ -114,6 +115,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                     title: widget.navigationModels[counter].title,
                     icon: widget.navigationModels[counter].icon,
                     animationController: _animationController,
+                    isCollapsedByDefault: widget.isCollapsedByDefault,
                   );
                 },
                 itemCount: widget.navigationModels.length,
