@@ -53,7 +53,10 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
         widget.navigationModels.addAll(demoNavigationItems);
       });
     }
-    isCollapsed = widget.isCollapsedByDefault;
+    setState(() {
+      isCollapsed = widget.isCollapsedByDefault;
+    });
+
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     if (isCollapsed) {
       widthAnimation = Tween<double>(begin: minWidth, end: maxWidth).animate(_animationController);
@@ -129,7 +132,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 });
               },
               child: AnimatedIcon(
-                icon: isCollapsed ? AnimatedIcons.menu_arrow : AnimatedIcons.close_menu,
+                icon: AnimatedIcons.close_menu,
                 progress: _animationController,
                 color: widget.selectedIconColor,
                 size: 50.0,
