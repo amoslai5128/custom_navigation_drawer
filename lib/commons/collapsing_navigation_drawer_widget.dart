@@ -57,11 +57,11 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
 
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     if (isCollapsed) {
-      widthAnimation = Tween<double>(begin: minWidth, end: maxWidth).animate(_animationController);
-      _animationController.reverse();
-    } else {
       widthAnimation = Tween<double>(begin: maxWidth, end: minWidth).animate(_animationController);
       _animationController.forward();
+    } else {
+      widthAnimation = Tween<double>(begin: minWidth, end: maxWidth).animate(_animationController);
+      _animationController.reverse();
     }
   }
 
