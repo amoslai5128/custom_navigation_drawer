@@ -14,6 +14,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final TextStyle? itemTextStyle;
   final TextStyle? selectedItemTextStyle;
   final Widget? buttonCopyrightWidget;
+  final bool isCollapsedByDefault;
 
   const CollapsingNavigationDrawer({
     Key? key,
@@ -27,6 +28,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.userNameTextStyle,
     this.buttonCopyrightWidget,
     this.selectedItemBackgroundColor,
+    this.isCollapsedByDefault = true,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
 class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> with SingleTickerProviderStateMixin {
   double maxWidth = 240;
   double minWidth = 70;
-  bool isCollapsed = false;
+  late bool isCollapsed;
   late AnimationController _animationController;
   late Animation<double> widthAnimation;
   int currentSelectedIndex = 0;
@@ -51,6 +53,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
         widget.navigationModels.addAll(demoNavigationItems);
       });
     }
+    isCollapsed = widget.isCollapsedByDefault;
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
     widthAnimation = Tween<double>(begin: maxWidth, end: minWidth).animate(_animationController);
   }
@@ -65,7 +68,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
 
   Widget getWidget(context, itemWidget) {
     return Material(
-      elevation: 80.0,
+      elevation: 70.0,
       child: Container(
         width: widthAnimation.value,
         color: widget.backgroundColor ?? drawerBackgroundColor,
