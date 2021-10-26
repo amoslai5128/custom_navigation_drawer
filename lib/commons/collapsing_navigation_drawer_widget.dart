@@ -56,13 +56,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
     isCollapsed = widget.isCollapsedByDefault;
 
     _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 300));
-    if (isCollapsed) {
-      widthAnimation = Tween<double>(begin: minWidth, end: maxWidth).animate(_animationController);
-      _animationController.forward();
-    } else {
-      widthAnimation = Tween<double>(begin: maxWidth, end: minWidth).animate(_animationController);
-      _animationController.reverse();
-    }
+    widthAnimation = Tween<double>(begin: maxWidth, end: minWidth).animate(_animationController);
   }
 
   @override
@@ -128,7 +122,11 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
               onTap: () {
                 setState(() {
                   isCollapsed = !isCollapsed;
-                  isCollapsed ? _animationController.forward() : _animationController.reverse();
+                  if (widget.isCollapsedByDefault) {
+                    isCollapsed ? _animationController.forward() : _animationController.reverse();
+                  } else {
+                    isCollapsed ? _animationController.reverse() : _animationController.forward();
+                  }
                 });
               },
               child: AnimatedIcon(
