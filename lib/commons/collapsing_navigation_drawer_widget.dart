@@ -129,7 +129,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 });
               },
               child: AnimatedIcon(
-                icon: AnimatedIcons.close_menu,
+                icon: isCollapsed ? AnimatedIcons.menu_arrow : AnimatedIcons.close_menu,
                 progress: _animationController,
                 color: widget.selectedIconColor,
                 size: 50.0,
