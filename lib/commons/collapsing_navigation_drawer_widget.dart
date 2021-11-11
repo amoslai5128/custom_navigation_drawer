@@ -5,9 +5,12 @@ import '../custom_navigation_drawer.dart';
 class CollapsingNavigationDrawer extends StatefulWidget {
   final List<NavigationModel> navigationModels;
   final Color? backgroundColor;
+  final double? elevation;
   final Color? iconColor;
   final Color? selectedIconColor;
   final Color? selectedItemBackgroundColor;
+  final Color? openedDrawIconColor;
+  final Color? closedDrawIconColor;
 
   final String userName;
   final TextStyle? userNameTextStyle;
@@ -21,6 +24,9 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     required this.navigationModels,
     required this.userName,
     this.backgroundColor,
+    this.elevation,
+    this.openedDrawIconColor,
+    this.closedDrawIconColor,
     this.iconColor,
     this.selectedIconColor,
     this.itemTextStyle,
