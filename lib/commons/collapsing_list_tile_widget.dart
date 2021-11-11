@@ -71,7 +71,7 @@ class _CollapsingListTileState extends State<CollapsingListTile> {
         ),
         width: widthAnimation.value,
         margin: EdgeInsets.symmetric(horizontal: 8.0),
-        padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+        padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 15.0),
         child: Row(
           children: <Widget>[
             Icon(
