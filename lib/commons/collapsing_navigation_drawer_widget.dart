@@ -78,7 +78,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
   }
 
   Widget getWidget(context, itemWidget) {
-    final elevation = isCollapsed ? (widget.elevation ?? 30.0) : (widget.elevation ?? 82.0);
+    final elevation = isCollapsed ? (widget.elevation ?? 30.0) : 82.0;
     return Material(
       elevation: elevation,
       child: Container(
