@@ -97,15 +97,15 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 isCollapsedByDefault: widget.isCollapsedByDefault,
               ),
             ),
-            Divider(
-              color: Colors.grey,
+            SizedBox(
+              // color: Colors.grey,
               height: 40.0,
             ),
             Expanded(
-              child: ListView.separated(
-                separatorBuilder: (context, counter) {
+              child: ListView.builder(
+                /* separatorBuilder: (context, counter) {
                   return Divider(height: 12.0);
-                },
+                }, */
                 itemBuilder: (context, counter) {
                   return CollapsingListTile(
                     onTap: () {
