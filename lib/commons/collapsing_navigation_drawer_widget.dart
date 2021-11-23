@@ -6,9 +6,12 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final List<NavigationModel> navigationModels;
   final Color? backgroundColor;
   final double? elevation;
-  final Color? iconColor;
+  final Color? userIconColor;
+  final Color? itemIconColor;
   final Color? selectedIconColor;
   final Color? selectedItemBackgroundColor;
+  final AnimatedIcons? openDrawerIcon;
+  final AnimatedIcons? closeDrawerIcon;
   final Color? openedDrawIconColor;
   final Color? closedDrawIconColor;
 
@@ -23,17 +26,20 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     Key? key,
     required this.navigationModels,
     required this.userName,
-    this.backgroundColor,
     this.elevation,
+    this.backgroundColor,
+    this.openDrawerIcon,
+    this.closeDrawerIcon,
     this.openedDrawIconColor,
     this.closedDrawIconColor,
-    this.iconColor,
+    this.userIconColor,
+    this.itemIconColor,
     this.selectedIconColor,
+    this.selectedItemBackgroundColor,
     this.itemTextStyle,
     this.selectedItemTextStyle,
     this.userNameTextStyle,
     this.buttonCopyrightWidget,
-    this.selectedItemBackgroundColor,
     this.isCollapsedByDefault = true,
   }) : super(key: key);
 
@@ -90,7 +96,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
               height: 85,
               child: CollapsingListTile(
                 title: widget.userName,
-                iconColor: widget.iconColor,
+                iconColor: widget.userIconColor,
                 textStyle: widget.userNameTextStyle,
                 icon: Icons.person,
                 animationController: _animationController,
@@ -115,7 +121,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                       widget.navigationModels[counter].onTap();
                     },
                     isSelected: currentSelectedIndex == counter,
-                    iconColor: widget.iconColor,
+                    iconColor: widget.itemIconColor,
                     selectedIconColor: widget.selectedIconColor,
                     selectedItemBackgroundColor: widget.selectedItemBackgroundColor,
                     textStyle: widget.itemTextStyle,
@@ -141,7 +147,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 });
               },
               child: AnimatedIcon(
-                icon: AnimatedIcons.menu_close,
+                icon: AnimatedIcons.menu_arrow,
                 progress: _animationController,
                 color: isCollapsed ? widget.openedDrawIconColor : widget.closedDrawIconColor,
                 size: 50.0,
