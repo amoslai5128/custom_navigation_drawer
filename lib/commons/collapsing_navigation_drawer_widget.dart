@@ -10,8 +10,8 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final Color? itemIconColor;
   final Color? selectedIconColor;
   final Color? selectedItemBackgroundColor;
-  final AnimatedIcons? openDrawerIcon;
-  final AnimatedIcons? closeDrawerIcon;
+  final AnimatedIconData? openDrawerIcon;
+  final AnimatedIconData? closeDrawerIcon;
   final Color? openedDrawIconColor;
   final Color? closedDrawIconColor;
 
@@ -83,6 +83,14 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
     );
   }
 
+  AnimatedIconData _getDrawerIcon() {
+    if (widget.isCollapsedByDefault) {
+      return widget.openDrawerIcon ?? AnimatedIcons.home_menu;
+    } else {
+      return widget.closeDrawerIcon ?? AnimatedIcons.menu_arrow;
+    }
+  }
+
   Widget getWidget(context, itemWidget) {
     final elevation = isCollapsed ? (widget.elevation ?? 30.0) : 82.0;
     return Material(
@@ -147,7 +155,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 });
               },
               child: AnimatedIcon(
-                icon: AnimatedIcons.menu_arrow,
+                icon: _getDrawerIcon(),
                 progress: _animationController,
                 color: isCollapsed ? widget.openedDrawIconColor : widget.closedDrawIconColor,
                 size: 50.0,
