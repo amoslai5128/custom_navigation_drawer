@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../custom_navigation_drawer.dart';
 
 class CollapsingNavigationDrawer extends StatefulWidget {
+  final bool isCollapsedByDefault;
+
   final List<NavigationModel> navigationModels;
   final Color? backgroundColor;
   final double? elevation;
@@ -14,13 +16,12 @@ class CollapsingNavigationDrawer extends StatefulWidget {
   final AnimatedIconData? closeDrawerIcon;
   final Color? openedDrawIconColor;
   final Color? closedDrawIconColor;
-
   final String userName;
   final TextStyle? userNameTextStyle;
   final TextStyle? itemTextStyle;
   final TextStyle? selectedItemTextStyle;
+  final Widget? userIconWidget;
   final Widget? buttonCopyrightWidget;
-  final bool isCollapsedByDefault;
 
   const CollapsingNavigationDrawer({
     Key? key,
@@ -41,6 +42,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.userNameTextStyle,
     this.buttonCopyrightWidget,
     this.isCollapsedByDefault = true,
+    this.userIconWidget,
   }) : super(key: key);
 
   @override
@@ -85,9 +87,9 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
 
   AnimatedIconData _getDrawerIcon() {
     if (widget.isCollapsedByDefault) {
-      return widget.openDrawerIcon ?? AnimatedIcons.home_menu;
+      return widget.openDrawerIcon ?? AnimatedIcons.menu_arrow;
     } else {
-      return widget.closeDrawerIcon ?? AnimatedIcons.menu_arrow;
+      return widget.closeDrawerIcon ?? AnimatedIcons.arrow_menu;
     }
   }
 

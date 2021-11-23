@@ -4,16 +4,13 @@ import 'package:flutter/material.dart';
 class CollapsingListTile extends StatefulWidget {
   final String title;
   final IconData icon;
-
   final Color? iconColor;
   final TextStyle? textStyle;
   final Color? selectedIconColor;
   final TextStyle? selectedTextStyle;
   final Color? selectedItemBackgroundColor;
-
   final AnimationController animationController;
   final bool isCollapsedByDefault;
-
   final bool isSelected;
   final void Function()? onTap;
 
