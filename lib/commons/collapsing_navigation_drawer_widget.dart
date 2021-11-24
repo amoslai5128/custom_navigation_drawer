@@ -108,7 +108,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 title: widget.userName,
                 iconColor: widget.userIconColor,
                 textStyle: widget.userNameTextStyle,
-                icon: Icons.person,
+                userIconWidget: widget.userIconWidget,
                 animationController: _animationController,
                 isCollapsedByDefault: widget.isCollapsedByDefault,
               ),
@@ -137,7 +137,7 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                     textStyle: widget.itemTextStyle,
                     selectedTextStyle: widget.selectedItemTextStyle,
                     title: widget.navigationModels[counter].title,
-                    icon: widget.navigationModels[counter].icon,
+                    itemIcon: widget.navigationModels[counter].icon,
                     animationController: _animationController,
                     isCollapsedByDefault: widget.isCollapsedByDefault,
                   );

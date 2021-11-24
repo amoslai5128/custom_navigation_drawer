@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 class CollapsingListTile extends StatefulWidget {
   final String title;
-  final IconData icon;
+
+  ///
+  final Widget? userIconWidget;
+  final IconData? itemIcon;
   final Color? iconColor;
   final TextStyle? textStyle;
   final Color? selectedIconColor;
@@ -16,7 +19,8 @@ class CollapsingListTile extends StatefulWidget {
 
   CollapsingListTile({
     required this.title,
-    required this.icon,
+    this.userIconWidget,
+    this.itemIcon,
     required this.animationController,
     required this.isCollapsedByDefault,
     this.selectedItemBackgroundColor,
@@ -34,6 +38,8 @@ class CollapsingListTile extends StatefulWidget {
 
 class _CollapsingListTileState extends State<CollapsingListTile> {
   late Animation<double> widthAnimation, sizedBoxAnimation;
+
+  bool get isUserIconItem => widget.userIconWidget != null;
 
   @override
   void initState() {
@@ -71,20 +77,21 @@ class _CollapsingListTileState extends State<CollapsingListTile> {
         padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         child: Row(
           children: <Widget>[
-            Icon(
-              widget.icon,
-              color: widget.isSelected ? widget.selectedIconColor : (widget.iconColor ?? Colors.white30),
-              size: 38.0,
-            ),
+            isUserIconItem
+                ? widget.userIconWidget!
+                : Icon(
+                    widget.itemIcon,
+                    color: widget.isSelected ? widget.selectedIconColor : (widget.iconColor ?? Colors.white30),
+                    size: 38.0,
+                  ),
             SizedBox(width: sizedBoxAnimation.value),
-            (widthAnimation.value >= 190)
-                ? Text(
-                    widget.title,
-                    style: widget.isSelected
-                        ? (widget.selectedTextStyle ?? listTitleSelectedTextStyle)
-                        : (widget.textStyle ?? listTitleDefaultTextStyle),
-                  )
-                : Container()
+            if (widthAnimation.value >= 190)
+              Text(
+                widget.title,
+                style: widget.isSelected
+                    ? (widget.selectedTextStyle ?? listTitleSelectedTextStyle)
+                    : (widget.textStyle ?? listTitleDefaultTextStyle),
+              )
           ],
         ),
       ),
