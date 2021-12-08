@@ -4,7 +4,7 @@ import '../custom_navigation_drawer.dart';
 
 class CollapsingNavigationDrawer extends StatefulWidget {
   final bool isCollapsedByDefault;
-
+  final int? currentSelectedIndex;
   final List<NavigationModel> navigationModels;
   final Color? backgroundColor;
   final double? elevation;
@@ -43,6 +43,7 @@ class CollapsingNavigationDrawer extends StatefulWidget {
     this.buttonCopyrightWidget,
     this.isCollapsedByDefault = true,
     this.userIconWidget,
+    this.currentSelectedIndex,
   }) : super(key: key);
 
   @override
@@ -57,7 +58,6 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
   late bool isCollapsed;
   late AnimationController _animationController;
   late Animation<double> widthAnimation;
-  int currentSelectedIndex = 0;
 
   @override
   void initState() {
@@ -125,12 +125,9 @@ class CollapsingNavigationDrawerState extends State<CollapsingNavigationDrawer> 
                 itemBuilder: (context, counter) {
                   return CollapsingListTile(
                     onTap: () {
-                      setState(() {
-                        currentSelectedIndex = counter;
-                      });
                       widget.navigationModels[counter].onTap();
                     },
-                    isSelected: currentSelectedIndex == counter,
+                    isSelected: widget.currentSelectedIndex == counter,
                     iconColor: widget.itemIconColor,
                     selectedIconColor: widget.selectedIconColor,
                     selectedItemBackgroundColor: widget.selectedItemBackgroundColor,
